@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/exchange-rate", "destination": "/api/exchange-rate" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

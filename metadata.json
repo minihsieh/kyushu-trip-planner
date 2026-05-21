@@ -1,0 +1,6 @@
+{
+  "name": "九州閃亮亮五日遊手冊",
+  "description": "九州五日遊行程指南：包含皿倉山夜景、熊本城、湯布院、和牛螃蟹會席及雙電車雙溫泉體驗。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
