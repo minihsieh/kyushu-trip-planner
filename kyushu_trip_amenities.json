@@ -666,40 +666,55 @@
         "category": "便利商店",
         "drive_min": 5,
         "distance_km": 2.3,
+        "lat": 33.070304,
+        "lng": 130.536618,
         "place_id": "ChIJWzITRgBTQDURQlnb2VeDrJ0",
-        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJWzITRgBTQDURQlnb2VeDrJ0"
+        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJWzITRgBTQDURQlnb2VeDrJ0",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&origin=33.0600336,130.5120802&destination=33.070304,130.536618&travelmode=driving"
       },
       {
         "name": "ビッグオーク南關購物中心",
         "category": "綜合超市",
         "drive_min": 7,
         "distance_km": 3.0,
+        "lat": 33.0583049,
+        "lng": 130.5432687,
         "place_id": "ChIJ7V4fG5JTQDURI3LyFg7ATVg",
-        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJ7V4fG5JTQDURI3LyFg7ATVg"
+        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJ7V4fG5JTQDURI3LyFg7ATVg",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&origin=33.0600336,130.5120802&destination=33.0583049,130.5432687&travelmode=driving"
       },
       {
         "name": "南關いきいき村 (特產中心)",
         "category": "農產特產",
         "drive_min": 6,
         "distance_km": 2.8,
+        "lat": 33.069439,
+        "lng": 130.547643,
         "place_id": "ChIJF9LjD4JTQDURqTtFsQmlgwg",
-        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJF9LjD4JTQDURqTtFsQmlgwg"
+        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJF9LjD4JTQDURqTtFsQmlgwg",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&origin=33.0600336,130.5120802&destination=33.069439,130.547643&travelmode=driving"
       },
       {
         "name": "Nanchan ちゃんぽん名店",
         "category": "餐廳",
         "drive_min": 7,
         "distance_km": 3.2,
+        "lat": 33.0793674,
+        "lng": 130.5420984,
         "place_id": "ChIJlTzh8VZTQDURcEr5vfE9Btg",
-        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJlTzh8VZTQDURcEr5vfE9Btg"
+        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJlTzh8VZTQDURcEr5vfE9Btg",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&origin=33.0600336,130.5120802&destination=33.0793674,130.5420984&travelmode=driving"
       },
       {
         "name": "Setaka Nankan 藥妝店",
         "category": "藥妝店",
         "drive_min": 7,
         "distance_km": 3.0,
+        "lat": 33.0577567,
+        "lng": 130.5428295,
         "place_id": "ChIJEZhJApJTQDURmH7Y5WQv1Wk",
-        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJEZhJApJTQDURmH7Y5WQv1Wk"
+        "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJEZhJApJTQDURmH7Y5WQv1Wk",
+        "directions_url": "https://www.google.com/maps/dir/?api=1&origin=33.0600336,130.5120802&destination=33.0577567,130.5428295&travelmode=driving"
       }
     ]
   },
