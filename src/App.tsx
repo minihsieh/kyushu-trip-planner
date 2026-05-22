@@ -30,7 +30,12 @@ import {
   Battery,
   AlertTriangle,
   CloudRain,
-  ShieldAlert
+  ShieldAlert,
+  Store,
+  ShoppingBasket,
+  Sparkles,
+  HeartPulse,
+  Gift
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import amenitiesData from '../kyushu_trip_amenities.json';
@@ -420,7 +425,7 @@ const USEFUL_INFO = {
   ],
   travelTips: [
     { title: "電壓規格", content: "100V，插頭雙平頭與台灣直接通用。" },
-    { title: "行李規定", content: "托運行李每人限額 30 KG，隨身行李 7 KG (長榮航空)。" },
+    { title: "行李規定", content: "托運行李每人限額 23 KG，隨身行李 7 KG (長榮航空)。" },
     { title: "上網漫遊", content: "請在前一晚或機場啟用 eSIM 或確認 SIM 卡數據漫遊已開啟。" },
     { title: "日幣現金", content: "建議自備 3萬~5萬日圓現金，部分山區/熊本溫泉飯店不收信用卡。" }
   ],
@@ -644,6 +649,58 @@ const DepartureInfo: React.FC<{ copyToClipboard: (text: string) => void }> = ({ 
   );
 };
 
+const getAmenitiesStyles = (category: string) => {
+  const normalized = category.trim();
+
+  if (normalized.includes("便利商店")) {
+    return {
+      Icon: Store,
+      iconColor: "text-emerald-600",
+      bgColor: "bg-emerald-50 border-emerald-100",
+    };
+  }
+  if (normalized.includes("藥妝") || normalized.includes("藥局") || normalized.includes("藥店")) {
+    return {
+      Icon: HeartPulse,
+      iconColor: "text-pink-600",
+      bgColor: "bg-pink-50 border-pink-100",
+    };
+  }
+  if (normalized.includes("餐廳") || normalized.includes("居酒屋") || normalized.includes("小吃") || normalized.includes("美食") || normalized.includes("酒")) {
+    return {
+      Icon: Utensils,
+      iconColor: "text-amber-600",
+      bgColor: "bg-amber-50 border-amber-100",
+    };
+  }
+  if (normalized.includes("超市")) {
+    return {
+      Icon: ShoppingBasket,
+      iconColor: "text-blue-600",
+      bgColor: "bg-blue-50 border-blue-100",
+    };
+  }
+  if (normalized.includes("特產") || normalized.includes("唐吉訶德") || normalized.includes("購物") || normalized.includes("商場") || normalized.includes("百貨") || normalized.includes("電器")) {
+    return {
+      Icon: Gift,
+      iconColor: "text-purple-600",
+      bgColor: "bg-purple-50 border-purple-100",
+    };
+  }
+  if (normalized.includes("咖啡") || normalized.includes("下午茶")) {
+    return {
+      Icon: Coffee,
+      iconColor: "text-amber-700",
+      bgColor: "bg-amber-50 border-amber-100",
+    };
+  }
+  return {
+    Icon: ShoppingBag,
+    iconColor: "text-slate-600",
+    bgColor: "bg-slate-50 border-slate-100",
+  };
+};
+
 const DayCard: React.FC<{ day: ItineraryItem }> = ({ day }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -852,23 +909,33 @@ const DayCard: React.FC<{ day: ItineraryItem }> = ({ day }) => {
                       <div className="flex flex-col gap-2">
                         {day.hotel.nearby.map((item, idx) => {
                           const mapUrl = isMobile && item.directionsLink ? item.directionsLink : item.link;
+                          const { Icon, iconColor, bgColor } = getAmenitiesStyles(item.category);
                           return (
                             <a 
                               key={idx}
                               href={mapUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-4 py-3 bg-white border border-[#E5E1D8] rounded-xl text-xs font-medium text-[#2C3E50] flex items-center justify-between hover:bg-[#F9F7F2] transition-colors"
+                              className="px-4 py-3 bg-white border border-[#E5E1D8] rounded-xl text-xs font-semibold text-[#2C3E50] flex items-center justify-between hover:bg-[#F9F7F2]/50 hover:border-[#F27D26]/40 transition-all duration-200 group"
                             >
                               <div className="flex items-center gap-3">
-                                <ShoppingBag size={14} className="text-[#F27D26]" />
-                                <span>
-                                  {item.isCar 
-                                    ? `${item.name}(${item.category})(開車${item.time}分鐘)` 
-                                    : `${item.name}(${item.category})(${item.time}分鐘)`}
-                                </span>
+                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center border shrink-0 ${bgColor}`}>
+                                  <Icon size={15} className={`${iconColor}`} />
+                                </div>
+                                <div className="text-left">
+                                  <p className="font-bold text-[#2C3E50] group-hover:text-[#F27D26] transition-colors line-clamp-1">
+                                    {item.name}
+                                  </p>
+                                  <p className="text-[10px] text-[#2C3E50]/55 mt-0.5 font-medium">
+                                    {item.isCar 
+                                      ? `${item.category} • 🚗 開車 ${item.time} 分鐘` 
+                                      : `${item.category} • 🚶 步行 ${item.time} 分鐘`}
+                                  </p>
+                                </div>
                               </div>
-                              <ExternalLink size={12} className="opacity-30" />
+                              <div className="w-7 h-7 rounded-full bg-[#F27D26]/5 flex items-center justify-center shrink-0 opacity-40 group-hover:opacity-100 group-hover:bg-[#F27D26]/10 transition-all duration-200" title="在 Google 地圖中開啟">
+                                <MapPin size={13} className="text-[#F27D26] group-hover:rotate-12 transition-transform" />
+                              </div>
                             </a>
                           );
                         })}
